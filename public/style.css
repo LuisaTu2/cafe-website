@@ -1,0 +1,167 @@
+body,html, #container {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    background-color:  rgb(14, 9, 6);
+}
+
+#topBorder{
+    background-color:  rgb(14, 9, 6);
+    width: 100%;
+    height: 10%;
+    margin: 0%;
+    padding: 0%;
+}
+
+#tutuCafe{
+    font-style: oblique;
+    font-family: serif;
+    font-size: 300%;
+    color: blanchedalmond;
+    /* float: left;   */
+    width: 100%; 
+    margin: 0%;
+    text-align: center;
+    padding-top: 1%;
+}
+
+
+#main {
+    width: 100%;
+    height: 87%;
+    background-image: url("pics/Coffee-Background-45-2560x1600.jpg");
+    opacity: 0.7;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+  
+    /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
+}
+
+
+#mainContent{
+    width: 50%;
+    height: 80%;
+    float: right;
+    padding-top: 8%;
+    padding-right: 3%;
+}
+
+
+nav{
+    /* overflow-x: auto; */
+    width: 100%;
+    height: 5%;
+    text-align: center; 
+}
+
+li {
+    display: inline;
+}
+
+a{
+    color: bisque;
+    text-decoration-line: none;
+    padding: 0% 2% 0% 2%;
+    font-family: serif;
+    font-size: 120%;
+}
+
+#mainContentTitle{
+    width: 100%;
+    height: 30%;
+
+}
+
+#mainContentText{
+    width: 800px;
+    height: 600px;
+
+}
+
+
+#textArea{
+    /* margin-right: 5%;
+    padding-top: 8%; */
+    /* width: 100%;
+    height: 100%; */
+    /* float: right; */
+}
+
+
+.mainContent{
+    font-family: serif;
+    font-size: 130%;
+    width: 100%;
+    color: blanchedalmond;
+    float: left;   
+}
+
+
+#bottomBorder{
+    background-color:  rgb(14, 9, 6);
+    float: right;
+    width: 30%;
+    height: 5%;
+    margin: 0%;
+    padding-top: 0.5%;
+    overflow-x: auto;
+}
+
+#bottomBorderTable{
+    margin: 0%; 
+    width: 100%;
+}
+
+
+.bottomBorderTitle{
+    margin: 0%;
+    width: 100%;
+    color: bisque;
+    /* padding-left: 80%; */
+    }
+
+
+#app{
+    width: 100%;
+    height: 30%;
+    color: aquamarine;
+}
+
+
+
+.tab-button {
+    padding: 6px 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: #f0f0f0;
+    margin-bottom: -1px;
+    margin-right: -1px;
+  }
+  .tab-button:hover {
+    background: #e0e0e0;
+  }
+  .tab-button.active {
+    background: #e0e0e0;
+  }
+  .tab {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+
+  #gmap{
+      height: 700px;
+      width: 700px;
+      background-color: aquamarine;
+  }   
+
+  #gmapContainer{
+      height:1000px;
+      width: 800px;
+      background-color: coral;
+  }

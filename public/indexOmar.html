@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coffee Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+
+
+</head>
+<body>
+    <div id="container">
+       <div id="topBorder">
+            <p id="tutuCafe">
+                <i><strong>Tutu Cafe</strong></i>
+            </p>
+        </div>
+
+
+        <div id="main">
+            <div id="mainContent">
+                <nav>
+                    <ul>
+                        <li><a href="#" @click="makeActive('home', $event)" id="home">Home</a></li>
+                        <li><a href="#" @click="makeActive('about', $event)" id="about">About</a></li>
+                        <li><a href="#" @click="makeActive('menu', $event)" id="menu" >Menu</a></li>
+                        <li><a href="#" @click="makeActive('hours', $event)" id="hours">Hours</a></li>
+                        <li><a href="#" @click="makeActive('location', $event)" id="location">Location</a></li>
+                    </ul>
+                </nav>
+
+                <div id="mainContentText">
+                  <post :selected="selected">  </post>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="bottomBorder">
+            <table id="bottomBorderTable">
+                    <tr>
+                        <td> <p class="bottomBorderTitle"> | Partnership | Careers | Copywright 2018 |</p> </td>
+                    </tr>
+            </table>
+        </div>
+
+        <div id="ajax" class="bottomBorderTitle"> {{ajaxmsg}} </div>
+
+    </div>    <!-- End div container -->
+
+
+    <script>
+
+    Vue.component("post",{
+        props: ["selected"],
+        data: function(){
+            return{
+                tabs:
+                    [
+                        {
+                            id: 1,
+                            title:"home",
+                            content: '<p > This is the home!!  </p>'
+                        },
+                        {
+                            id: 2,
+                            title:"about",
+                            content: '<p> This is the about content! </p>'
+                        },
+                        {
+                            id: 3,
+                            title:"menu",
+                            content: '<p> This is the menu </p>'
+                        },
+                        {
+                            id: 4,
+                            title:"hours",
+                            content: '<p> We operate during the following: </p>'
+                        },
+                        {
+                            id: 5,
+                            title:"location",
+                            content: `<p> You can find us here:
+
+                                    <div id="map"></div>
+
+                                </p>
+
+                                `
+                        }
+                    ],
+            }
+        },
+            computed: {
+                activeTab: function() {
+                    var self = this;
+                    return self.tabs.filter(function(t) {
+                         if(t.title === self.selected){
+                            return t
+                        }
+                    })
+            }},
+            template:
+            `
+                <div class="mainContent">
+                    <li v-for="a in activeTab">
+                        <p v-html="a.content">  </p>
+                    </li>
+                </div>
+            `
+
+    });
+
+    new Vue({
+        el:"#container",
+        data: {
+            selected: "home",
+            ajaxmsg:"This is my home town"
+
+        },
+        mounted: function(){
+            this.updateAjax();
+        },
+        methods:{
+            makeActive: function(item, $event){
+                var e = $event;
+                // THERE IS REALLY NO NEED FOR EVENT, FIND A DIFFERENT WAY TO GET THE ELEMENT BY ID
+                console.log(e);
+                console.log(item);
+                this.selected = item;
+                alert(`You selected ${item}!` )
+            }, // end of makeActive
+            updateAjax: function(){
+                Vue.http.post("/hours").then((response) => {
+                        console.log(response.message);
+                    });
+            }
+        }, // end of methods
+
+
+
+    });
+
+    // new Vue({
+    //     el:"#ajax",
+    //     data:{
+
+    //     },
+    //     methods:{
+    //
+    //     } // end of methods
+    // })
+
+
+
+
+    </script>
+
+
+</body>
+</html>
