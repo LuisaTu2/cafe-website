@@ -1,4 +1,4 @@
-body,html, #container {
+body, html, #container {
     width: 100%;
     height: 100%;
     margin: 0%;
@@ -6,7 +6,8 @@ body,html, #container {
     background-color:  rgb(14, 9, 6);
 }
 
-#topBorder{
+/* ID */
+#header{
     background-color:  rgb(14, 9, 6);
     width: 100%;
     height: 10%;
@@ -26,20 +27,17 @@ body,html, #container {
     padding-top: 1%;
 }
 
-
 #main {
     width: 100%;
     height: 87%;
-    background-image: url("pics/Coffee-Background-45-2560x1600.jpg");
+    background-image: url("../pics/Coffee-Background-45-2560x1600.jpg");
     opacity: 0.7;
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: cover;
-  
+    background-size: cover; 
     /* -webkit-transform: scaleX(-1);
     transform: scaleX(-1); */
 }
-
 
 #mainContent{
     width: 50%;
@@ -49,56 +47,15 @@ body,html, #container {
     padding-right: 3%;
 }
 
-
-nav{
-    /* overflow-x: auto; */
-    width: 100%;
-    height: 5%;
-    text-align: center; 
-}
-
-li {
-    display: inline;
-}
-
-a{
-    color: bisque;
-    text-decoration-line: none;
-    padding: 0% 2% 0% 2%;
-    font-family: serif;
-    font-size: 120%;
-}
-
 #mainContentTitle{
     width: 100%;
     height: 30%;
-
 }
 
 #mainContentText{
     width: 800px;
     height: 600px;
-
 }
-
-
-#textArea{
-    /* margin-right: 5%;
-    padding-top: 8%; */
-    /* width: 100%;
-    height: 100%; */
-    /* float: right; */
-}
-
-
-.mainContent{
-    font-family: serif;
-    font-size: 130%;
-    width: 100%;
-    color: blanchedalmond;
-    float: left;   
-}
-
 
 #bottomBorder{
     background-color:  rgb(14, 9, 6);
@@ -115,6 +72,25 @@ a{
     width: 100%;
 }
 
+#goHome{
+    background-color: beige;
+}
+
+#mymap{
+    background-color: aqua;
+    height: 50%;
+    width: 50%;
+}
+
+/* Classes */
+.mainContent{
+    font-family: serif;
+    font-size: 130%;
+    width: 100%;
+    color: blanchedalmond;
+    float: left;   
+}
+
 
 .bottomBorderTitle{
     margin: 0%;
@@ -122,14 +98,6 @@ a{
     color: bisque;
     /* padding-left: 80%; */
     }
-
-
-#app{
-    width: 100%;
-    height: 30%;
-    color: aquamarine;
-}
-
 
 
 .tab-button {
@@ -151,17 +119,10 @@ a{
   .tab {
     border: 1px solid #ccc;
     padding: 10px;
+    height: 550px;
+
   }
 
 
-  #gmap{
-      height: 700px;
-      width: 700px;
-      background-color: aquamarine;
-  }   
 
-  #gmapContainer{
-      height:1000px;
-      width: 800px;
-      background-color: coral;
-  }
+

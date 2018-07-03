@@ -20,172 +20,138 @@ var tabs = [
     {
         name: 'Hours',
         component: {
-            props: ["h"],
-            template: '<div class="mainContent" > our following hours: {{h}} </div>',
+            props: ["hours"],
+            template: '<div class="mainContent" > our following hours: {{hours}} </div>',
         }
     },
     {
         name: 'Location',
         component: {
           template: `<div class="mainContent"> 
-          You can find us here: 
+              You can find us here: 
+              <div id="mymap"> </div>
           
           </div>`,
-        }
-      }
-  ]
+          created(){
+            console.log("I am being created!");
+            if($("#mymap")){
+              console.log("the map element is created")};
+          },
+          mounted() {
+            console.log("Mounted");
+              var loc_center = { lat: 37.7749, lng: -122.4194 };
+              var map = new google.maps.Map(document.getElementById('mymap'), {  // WHY NOT WORKING WITH JQUERY???
+                  zoom: 4,
+                  center: loc_center
+              });
+              var marker = new google.maps.Marker({
+                          position: loc_center,
+                          map: map
+              });
+          } // end of mounted
+        } // end of component
+      } // end of location
+  ] // end of tabs
 
-  Vue.component("googlemap",{
-    //   props:{
-    //       bounds:{
-    //           type:Object
-    //       }
-    //   },
-    //   data: function(){
-    //     return {m: null}
-    //   },
-   
-    mounted: function initMap() {
-        const element = document.getElementById("gmap")
-        const options = {
-          zoom: 14,
-          center: new google.maps.LatLng(51.501527,-0.1921837)
-        }
-        this.m = new google.maps.Map(element, options);
-        //console.log(element);
-    },
 
-  })
-  
-  new Vue({
-    el: '#container',
-    data: {
-        tabs: tabs,
-        currentTab: tabs[0],
-        h: "No request so far"
-    },
-    
-    methods: {
-        ajaxCall: function(key){ 
+Vue.component("home", {
+        data: 
+          function(){
+            return {
+              tabs: tabs,
+              currentTab: tabs[0],
+              hours: "Unavailable"
+             }
+          }
+        ,
+        template: `       
+        <div>
+                <button
+                  v-for="tab in tabs"
+                  v-bind:key="tab.name"
+                  v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
+                  v-on:click="currentTab = tab, getHours(tab.name)"               
+                >{{ tab.name }}</button>
+              
+                <component
+                  v-bind:is="currentTab.component"
+                  class="tab"  
+                  :hours="hours"                       
+                ></component>                
+        </div>
+       `,
+        methods: {
+          getHours: function(key){ 
             if(key==='Hours') {
-                Vue.http.post("/hours").then((res) => {
-                    //this.$http.post("/hours").then((res) => {
+                Vue.http.post("/gethours").then((res) => {
+                //this.$http.post("/hours").then((res) => {
                             console.log("The response from the ajax call is: ")
                             console.log(res);
-                            console.log("The key is:" + key);
-                            this.h = res.body;
+                            console.log("The key is: " + key);
+                            this.hours = res.body;
+                            
                         });
             }
-        }
-    }
-  })
- 
+        }, // end of getHours
+        } // end of methods
+        
+});
+
+
+Vue.component("partnership", {
+  props:["toggle"],
+        template:`
+        <div>
+        <div class="bottomBorderTitle">
+                We proudly partner with Tutu&ampXiongmao.com.             
+        </div>
+        <button class="goHome" @click='$emit("updatetoggle")'> Home </button>
+        </div>
+        `
+});
+
+new Vue({
+  el: '#container',
+  data: {
+      toggle: "home"
+  }, 
+  methods: {
+      updatetoggle: function(key){
+        this.toggle = key;
+        console.log(this.toggle);
+      }
+      // , partnership: function(){     // used for ajax
+      //         Vue.http.get("/partnership").then((res)=>{
+      //           console.log("The response: ");
+      //           console.log(res.body);
+      //           document.getElementById("mainContent").innerHTML = res.body;
+      //         })
+      // } // end of partnership
+  } // end of methods
+});
 
 
 
-//  Vue.component("post",{
-//         props: ["selected", "h"],
-//         data: function(){
-//             return{
-//                 tabs: 
-//                     [
-//                         {
-//                             id: 1,
-//                             title:"home",
-//                             content: '<p > This is the home!!  </p>'
-//                         },
-//                         {
-//                             id: 2,
-//                             title:"about",
-//                             content: '<p> This is the about content! </p>'
-//                         },
-//                         {
-//                             id: 3,
-//                             title:"menu",
-//                             content: '<p> This is the menu </p>'
-//                         },                        
-//                         {
-//                             id: 4,
-//                             title:"hours",
-//                             content: ` We operate during the following hours:
-//                             <div > 
-                            
-//                             </div>
-//                             `
-//                         },
-//                         {
-//                             id: 5,
-//                             title:"location",
-//                             content: `<p> You can find us here: 
-                                
-//                                     <div id="map"></div>
-
-//                                 </p>
-                                                          
-//                                 `  
-//                         }
-//                     ],
-//             }
-//         },
-//         computed: {
-//             activeTab: function() {
-//                 var self = this;
-//                 return self.tabs.filter(function(t) {
-//                         if(t.title === self.selected){
-//                         return t
-//                     }
-//                 })
-//             }, // end of activeTab
-//             // activeHours: function(){
-//             //     var self = this;
-//             //     return self.h;
-//             // }
-//         },
-//         template: 
-//         `                
-//             <div class="mainContent">  
-//                 <li v-for="a in activeTab"> 
-//                     <p v-html="a.content"> </p>   
-//                     <p > {{h}} </p>
-//                     The selection:
-//                     {{selected}}   
-                          
-//                 </li>                   
-//             </div>                
-//         `
-//     });
 
 
-    // new Vue({
-    //     el:"#container",
-    //     data: {
-    //         selected: "home",
-    //         h: "This is where the hours go."           
-    //     },
-    //     // mounted: function(){
-    //     //     this.updateAjax();
-    //     // },
-    //     methods:{
-    //         makeActive: function(item, $event){
-    //             var e = $event;
-    //             console.log(e);
-    //             console.log(item);
-    //             this.selected = item;
-    //             if(item === "hours"){
-    //                 this.updateHoursAjax();
-    //             }
-    //         }, // end of makeActive
-    //         updateHoursAjax: function(){           
-    //             Vue.http.post("/hours").then((res) => {
-    //             //this.$http.post("/hours").then((res) => {
-    //                     console.log("The response from the ajax call is: ")
-    //                     console.log(res);
-    //                     this.h = res.body;
-    //                 });
-    //         }
-    //     }, // end of methods
-       
-              
 
-    // });
+// Vue.component("gmapp",{
+//   //   props:{
+//   //       bounds:{
+//   //           type:Object
+//   //       }
+//   //   },
+//     data: function(){
+//       return {m: null}
+//     },  
+//   mounted: function () {
+//       const element = document.getElementById("gmap")
+//       const options = {
+//         zoom: 14,
+//         center: new google.maps.LatLng(51.501527,-0.1921837)
+//       }
+//       this.m = new google.maps.Map(element, options);
+//       //console.log(element);
+//   },
 
+// }) // end of gmap component

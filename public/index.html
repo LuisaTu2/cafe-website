@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Coffee Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" /> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
-  
-  
+    <!-- <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKUQoxuJYwJ6eMIq8Gn33cf-LalCl7GA"  async defer></script> -->
+   
 </head>
 <body>
-    <div id="container">
-       <div id="topBorder">
+    
+    <div id="container" >
+
+       <div id="header">
             <p id="tutuCafe">
                 <i><strong>Tutu Cafe</strong></i> 
             </p>
@@ -22,41 +24,9 @@
 
         
         <div id="main">
-            <div id="mainContent">
-                <!-- <nav>
-                    <ul>
-                        <li><a href="#" @click="makeActive('home', $event)" id="home">Home</a></li>
-                        <li><a href="#" @click="makeActive('about', $event)" id="about">About</a></li>
-                        <li><a href="#" @click="makeActive('menu', $event)" id="menu" >Menu</a></li>
-                        <li><a href="#" @click="makeActive('hours', $event)" id="hours" >Hours</a></li>
-                        <li><a href="#" @click="makeActive('location', $event)" id="location">Location</a></li>
-                    </ul>
-                </nav>
-                
-                <div id="mainContentTitle">
-                  <post :selected="selected" :h="h">  </post>
-                </div> -->
-                <!-- <div id="mainContentText">
-                        {{hours}}
-                </div> -->
-
-                <div id="dynamic-component-demo" class="demo">
-                        <button
-                          v-for="tab in tabs"
-                          v-bind:key="tab.name"
-                          v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
-                          v-on:click="currentTab = tab, ajaxCall(tab.name)"
-                          
-                        >{{ tab.name }}</button>
-                      
-                        <component
-                          v-bind:is="currentTab.component"
-                          class="tab"  
-                          :h="h"                       
-                          ></component>
-                          
-                </div>
-                
+            <div id="mainContent" :toggle="toggle">
+                <home v-if="toggle === 'home'" ></home>
+                <partnership v-else v-on:updatetoggle="updatetoggle('home')"></partnership>
             </div>  <!-- end of mainContent -->
         </div>  <!-- end of main -->
 
@@ -64,18 +34,33 @@
         <div id="bottomBorder">
             <table id="bottomBorderTable">
                     <tr>
-                        <td> <p class="bottomBorderTitle"> | Partnership | Careers | Copywright 2018 |</p> </td>
+                        <td> <p class="bottomBorderTitle"  @click="updatetoggle('partnership')"> | Partnership </p> </td>
+                        <td> <p class="bottomBorderTitle"> | Careers | </p> </td>
+                        <td> <p class="bottomBorderTitle"> Copywright 2018 |</p> </td>                        
                     </tr>
             </table>
         </div>
 
-        <!-- <button id="ajaxButton" @click="updateAjax"> ajaxButton</button> -->
-        <!-- <div id="ajax" class="bottomBorderTitle" > {{h}} </div> -->
-          <div id="gmap">  </div>  
+
+
+
     </div>    <!-- End div container -->
 
-    <script src="js/main.js"></script>
-    <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKUQoxuJYwJ6eMIq8Gn33cf-LalCl7GA"  async defer></script>
+
    
+    <script src="js/main.js"></script>
+
+
+    <div id="map">
+
+    </div>
+    <script src="js/createMap.js">
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1H9pDYO0PXcWhUUiO4ttt788SI0jr73U">
+    </script>
+
+
 </body>
 </html>
