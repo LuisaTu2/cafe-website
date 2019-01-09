@@ -1,0 +1,5 @@
+# Miscellaneous
+package-lock.json
+archive*
+gmapkey.json
+createMap.js

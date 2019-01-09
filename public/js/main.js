@@ -2,13 +2,13 @@ var tabs = [
     {
       name: 'Home', 
       component: {
-        template: '<div class="mainContent">Home component</div>' 
+        template: '<div class="mainContent"> Welcome to Dark Roast Cafe! \n Enjoy our blends made with the finest Colombian coffee beans.  </div>' 
       }
     },
     {
       name: 'About',
       component: {
-        template: '<div class="mainContent">Posts component</div>'
+        template: '<div class="mainContent"> It all started with two gals wanting to explored the world by backpacking in South America... </div>'
       }
     },
     {
@@ -21,26 +21,32 @@ var tabs = [
         name: 'Hours',
         component: {
             props: ["hours"],
-            template: '<div class="mainContent" > our following hours: {{hours}} </div>',
+            template: `<div class="mainContent" > 
+                              <p> Come visit us during the following hours: </p>
+                              <p> Monday through Friday: {{hours.MF}} </p>
+                              <p> Weekends and Holidays: {{hours.WH}} </p>
+                       </div>`,
         }
     },
     {
         name: 'Location',
         component: {
           template: `<div class="mainContent"> 
-              You can find us here: 
-              <div id="mymap"> </div>
-          
-          </div>`,
-          created(){
-            console.log("I am being created!");
-            if($("#mymap")){
-              console.log("the map element is created")};
-          },
+                    <p> You can find us here: </p> 
+                    <p> 1234 Hilly Hill Road </p> 
+
+                    <div id="mymap"> </div>
+          </div>`
+          ,
+          // created(){
+          //   console.log("I am being created!");
+          //   if($("#mymap")){
+          //     console.log("the map element is created")};
+          // },
           mounted() {
             console.log("Mounted");
               var loc_center = { lat: 37.7749, lng: -122.4194 };
-              var map = new google.maps.Map(document.getElementById('mymap'), {  // WHY NOT WORKING WITH JQUERY???
+              var map = new google.maps.Map(document.getElementById('mymap'), {  // Check if working with jquery
                   zoom: 4,
                   center: loc_center
               });
@@ -88,8 +94,7 @@ Vue.component("home", {
                             console.log("The response from the ajax call is: ")
                             console.log(res);
                             console.log("The key is: " + key);
-                            this.hours = res.body;
-                            
+                            this.hours = res.body;                        
                         });
             }
         }, // end of getHours

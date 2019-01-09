@@ -1,9 +1,13 @@
-body, html, #container {
+body, html {
     width: 100%;
     height: 100%;
     margin: 0%;
     padding: 0%;
     background-color:  rgb(14, 9, 6);
+}
+
+#container{
+    height: 100%;
 }
 
 /* ID */
@@ -16,9 +20,10 @@ body, html, #container {
 }
 
 #tutuCafe{
-    font-style: oblique;
-    font-family: serif;
-    font-size: 300%;
+    /* font-style: oblique; */
+    /* font-family: serif; */
+    font-family: 'Sorts Mill Goudy', serif;
+    font-size: 200%;
     color: blanchedalmond;
     /* float: left;   */
     width: 100%; 
@@ -35,26 +40,28 @@ body, html, #container {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover; 
+    font-family: 'Sorts Mill Goudy', serif;
     /* -webkit-transform: scaleX(-1);
     transform: scaleX(-1); */
 }
 
 #mainContent{
     width: 50%;
-    height: 80%;
+    height: 87%;
     float: right;
+    /* background-color: aqua; */
     padding-top: 8%;
-    padding-right: 3%;
+    padding-right: 0%;
 }
 
 #mainContentTitle{
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
 }
 
 #mainContentText{
-    width: 800px;
-    height: 600px;
+    /* width: 800px;
+    height: 600px; */
 }
 
 #bottomBorder{
@@ -73,20 +80,21 @@ body, html, #container {
 }
 
 #goHome{
-    background-color: beige;
+    /* background-color: beige; */
 }
 
 #mymap{
-    background-color: aqua;
-    height: 50%;
-    width: 50%;
+    /* background-color: aqua; */
+    height: 60%;
+    width: 70%;
+    /* align-content: center;  */
 }
 
 /* Classes */
 .mainContent{
     font-family: serif;
-    font-size: 130%;
-    width: 100%;
+    font-size: 100%;
+    /* width: 100%; */
     color: blanchedalmond;
     float: left;   
 }
@@ -96,17 +104,22 @@ body, html, #container {
     margin: 0%;
     width: 100%;
     color: bisque;
-    /* padding-left: 80%; */
     }
 
 
 .tab-button {
-    padding: 6px 10px;
+    padding: 6px 5px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border: 1px solid #ccc;
     cursor: pointer;
-    background: #f0f0f0;
+    /* color: blue; */
+    font-family: 'Sorts Mill Goudy', serif;
+    font-size: 110%;
+    /* font-weight: bold; */
+    width: 80px;
+    /* background: #f0f0f0; */
+    background-color: #d9b597;
     margin-bottom: -1px;
     margin-right: -1px;
   }
@@ -114,13 +127,19 @@ body, html, #container {
     background: #e0e0e0;
   }
   .tab-button.active {
-    background: #e0e0e0;
+    /* background: #e0e0e0; */
   }
   .tab {
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     padding: 10px;
-    height: 550px;
-
+    height: 300px;
+    width: 376px;
+    font-family: 'Sorts Mill Goudy', serif;
+    font-weight: normal;
+    background-color: rgb(250, 240, 225);
+    color: #430c05;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 
 

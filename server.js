@@ -6,9 +6,9 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/views"));  
 
 app.post("/gethours", function(req, res){
-    var a = "7:30AM - 6:00PM";
+    var a = {"MF": "6:00AM - 3:00PM", "WH": "7:00AM - 2:00PM"};
     res.status(200).send(a);
-    console.log("Hello there");
+    // console.log("Hello there");
     console.log(a);
 })
 
