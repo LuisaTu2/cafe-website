@@ -20,3 +20,4 @@ Mock-up of a coffee shop website written in HTML, CSS, Javascript, Node.js and V
 6. To terminate enter the following command in the terminal:
    CTRL+C
 
+7. Update google map key.
