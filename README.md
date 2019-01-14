@@ -1,7 +1,7 @@
 # Cafe Website
 Sample of a coffee shop website written in HTML, CSS, Javascript, Node.js and Vue.js
 
-# INSTRUCTIONS
+# Get started
 1. Clone the project.
 
 2. Add your Google API Key to the script tag in the index file: <br>
