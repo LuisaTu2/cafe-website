@@ -16,3 +16,7 @@ Sample of a coffee shop website written in HTML, CSS, Javascript, Node.js and Vu
   
 5. Visit http://localhost:8080/ to render the website. 
 
+
+First page rendering is displayed below:
+
+![Cafe - Welcome Page](screenshot.png)
