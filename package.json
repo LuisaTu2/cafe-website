@@ -1,0 +1,31 @@
+{
+  "name": "cafe",
+  "version": "1.0.0",
+  "description": "Sample of a coffee shop website written in HTML, CSS, Javascript, Node.js and Vue.js",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "body-parser": "^1.18.3",
+    "google-maps": "^3.3.0",
+    "path": "^0.12.7",
+    "require": "^2.4.20",
+    "vue-axios": "^2.1.1",
+    "vue2-google-maps": "^0.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisaTu2/cafe-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisaTu2/cafe-website/issues"
+  },
+  "homepage": "https://github.com/LuisaTu2/cafe-website#readme"
+}
