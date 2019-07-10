@@ -1,146 +1,96 @@
 body, html {
     width: 100%;
-    height: 100%;
+    min-width: 768px;
+    /* height: 100%; */
+    color: blanchedalmond;
     margin: 0%;
     padding: 0%;
-    background-color:  rgb(14, 9, 6);
+    background-image: linear-gradient(to bottom right, rgb(51, 22, 51), rgb(136, 117, 136)    );
+    font-family: 'Special Elite', cursive;
 }
 
-#container{
-    height: 100%;
+.container-fluid  {
+    /* padding: 0%;
+    margin: 0%; */
 }
 
-/* ID */
-#header{
-    background-color:  rgb(14, 9, 6);
+.row{
+    /* background-color: rgb(95, 178, 216); */
+}
+
+
+.app{
+    /* background-color: orange; */
     width: 100%;
-    height: 10%;
-    margin: 0%;
+}
+
+.header{
+    /* background-color: rgb(51, 22, 51); */
+    height: 90px;
+}
+
+.headerTitle{
+    font-size: 2em;
+    color: blanchedalmond;
+}
+
+.main {
+    /* background-color: green; */
+}
+
+
+.mainContentToggle{
     padding: 0%;
 }
 
-#tutuCafe{
-    /* font-style: oblique; */
-    /* font-family: serif; */
-    font-family: 'Sorts Mill Goudy', serif;
-    font-size: 200%;
-    color: blanchedalmond;
-    /* float: left;   */
-    width: 100%; 
-    margin: 0%;
-    text-align: center;
-    padding-top: 1%;
-}
-
-#main {
-    width: 100%;
-    height: 87%;
-    background-image: url("../pics/Coffee-Background-45-2560x1600.jpg");
-    opacity: 0.7;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover; 
-    font-family: 'Sorts Mill Goudy', serif;
-    /* -webkit-transform: scaleX(-1);
-    transform: scaleX(-1); */
-}
-
-#mainContent{
-    width: 50%;
-    height: 87%;
-    float: right;
-    /* background-color: aqua; */
-    padding-top: 8%;
-    padding-right: 0%;
-}
-
-#mainContentTitle{
-    width: 100%;
-    /* height: 30%; */
-}
-
-#mainContentText{
-    /* width: 800px;
-    height: 600px; */
-}
-
-#bottomBorder{
-    background-color:  rgb(14, 9, 6);
-    float: right;
-    width: 30%;
-    height: 5%;
-    margin: 0%;
-    padding-top: 0.5%;
-    overflow-x: auto;
-}
-
-#bottomBorderTable{
-    margin: 0%; 
+.mainContentFluidContainer{
     width: 100%;
 }
 
-#goHome{
-    /* background-color: beige; */
+.rowTabs{
 }
 
-#mymap{
-    /* background-color: aqua; */
-    height: 60%;
-    width: 70%;
-    /* align-content: center;  */
+.tab-item{
+    color: rgb(56, 56, 82);
+    background-color: yellowgreen;
+    font-size: 1.5em;
+    padding: 20px 0%;
 }
 
-/* Classes */
-.mainContent{
-    font-family: serif;
-    font-size: 100%;
-    /* width: 100%; */
-    color: blanchedalmond;
-    float: left;   
+.rowMainContent{
+    min-height: 800px;
+    font-size: 1.5em;
+    padding: 5%;
 }
 
-
-.bottomBorderTitle{
-    margin: 0%;
-    width: 100%;
-    color: bisque;
-    }
-
-
-.tab-button {
-    padding: 6px 5px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    /* color: blue; */
-    font-family: 'Sorts Mill Goudy', serif;
-    font-size: 110%;
-    /* font-weight: bold; */
-    width: 80px;
-    /* background: #f0f0f0; */
-    background-color: #d9b597;
-    margin-bottom: -1px;
-    margin-right: -1px;
-  }
-  .tab-button:hover {
+.tabItem:hover {
     background: #e0e0e0;
   }
-  .tab-button.active {
-    /* background: #e0e0e0; */
-  }
-  .tab {
-    /* border: 1px solid #ccc; */
-    padding: 10px;
+
+
+#home img{
+    width: 480px;
     height: 300px;
-    width: 376px;
-    font-family: 'Sorts Mill Goudy', serif;
-    font-weight: normal;
-    background-color: rgb(250, 240, 225);
-    color: #430c05;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
+
+    /* height: 50%; */
+    padding-top: 5%;
+}
+
+
+
+
+
+#mymap{
+    height: 60%;
+    width: 70%;
+}
+
+
+.footer{
+    color: rgb(56, 56, 82);
+    background-color: yellowgreen;
+}
+
 
 
 

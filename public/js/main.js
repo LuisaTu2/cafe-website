@@ -1,27 +1,47 @@
 var tabs = [
     {
-      name: 'Home', 
-      component: {
-        template: '<div class="mainContent"> Welcome to Dark Roast Cafe! \n Enjoy our blends made with the finest Colombian coffee beans.  </div>' 
+        name: 'Home', 
+        component: {
+        template: `
+        <div id="home" class="text"> 
+            Welcome to Dark Roast Cafe! 
+            <br />
+            Enjoy our blends made with the finest Colombian coffee beans. 
+            <br /> 
+            <img src="./pics/espresso-beans.jpg" />
+        </div>` 
       }
     },
     {
-      name: 'About',
-      component: {
-        template: '<div class="mainContent"> It all started with two gals wanting to explored the world by backpacking in South America... </div>'
+        name: 'About',
+        component: {
+        template: `
+        <div class="text"> 
+            It all started with two gals wanting to explored the world by backpacking in South America... 
+        </div>`
       }
     },
-    {
-      name: 'Menu',
-      component: {
-        template: '<div class="mainContent">Menu component</div>',
+    {   name: 'Menu',
+        component: {
+        template: `
+        <div class="text">
+            Menu component
+        </div>`,
       }
+    },
+    {   name: 'Suppliers',
+        component: {
+          template: `
+            <div class="text">
+                We parter with...
+            </div>`,
+        }
     },
     {
         name: 'Hours',
         component: {
             props: ["hours"],
-            template: `<div class="mainContent" > 
+            template: `<div class="text"> 
                               <p> Come visit us during the following hours: </p>
                               <p> Monday through Friday: {{hours.MF}} </p>
                               <p> Weekends and Holidays: {{hours.WH}} </p>
@@ -29,20 +49,21 @@ var tabs = [
         }
     },
     {
-        name: 'Location',
+        name: 'Locations',
         component: {
-          template: `<div class="mainContent"> 
-                    <p> You can find us here: </p> 
+          template: `<div> 
+                    <p> You can find us: </p> 
                     <p> 1234 Hilly Hill Road </p> 
 
                     <div id="mymap"> </div>
+                    Follow us on FriendBook and Foodagram!
           </div>`
           ,
-          // created(){
-          //   console.log("I am being created!");
-          //   if($("#mymap")){
-          //     console.log("the map element is created")};
-          // },
+          created(){
+            console.log("I am being created!");
+            if($("#mymap")){
+              console.log("the map element is created")};
+          },
           mounted() {
             console.log("Mounted");
               var loc_center = { lat: 37.7749, lng: -122.4194 };
@@ -60,7 +81,7 @@ var tabs = [
   ] // end of tabs
 
 
-Vue.component("home", {
+Vue.component("maincontent", {
         data: 
           function(){
             return {
@@ -71,19 +92,22 @@ Vue.component("home", {
           }
         ,
         template: `       
-        <div>
-                <button
+        <div class="container-fluid mainContentFluidContainer">
+            <div class="row rowTabs ">
+                <div
                   v-for="tab in tabs"
                   v-bind:key="tab.name"
-                  v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
+                  v-bind:class="['tab-item','col', 'text-center',  { active: currentTab.name === tab.name }]"
                   v-on:click="currentTab = tab, getHours(tab.name)"               
-                >{{ tab.name }}</button>
-              
-                <component
+                >{{ tab.name }}</div>
+            </div>
+            <div class="row rowMainContent "> 
+                <div
                   v-bind:is="currentTab.component"
-                  class="tab"  
+                  class="col colMainContent"  
                   :hours="hours"                       
-                ></component>                
+                ></div>                
+            </div>
         </div>
        `,
         methods: {
@@ -103,60 +127,63 @@ Vue.component("home", {
 });
 
 
-Vue.component("partnership", {
-  props:["toggle"],
-        template:`
-        <div>
-        <div class="bottomBorderTitle">
-                We proudly partner with Tutu&ampXiongmao.com.             
-        </div>
-        <button class="goHome" @click='$emit("updatetoggle")'> Home </button>
-        </div>
-        `
-});
+// Vue.component("partnership", {
+//   props:["toggle"],
+//         template:`
+//         <div>
+//         <div class="bottomBorderTitle">
+//                 We proudly partner with Tutu&ampXiongmao.com.             
+//         </div>
+//         <button class="goHome" @click='$emit("updatetoggle")'> Home </button>
+//         </div>
+//         `
+// });
+
+
+
+
+
+
+
+
+Vue.component("gmapp",{
+  //   props:{
+  //       bounds:{
+  //           type:Object
+  //       }
+  //   },
+    data: function(){
+      return {m: null}
+    },  
+  mounted: function () {
+      const element = document.getElementById("gmap")
+      const options = {
+        zoom: 14,
+        center: new google.maps.LatLng(51.501527,-0.1921837)
+      }
+      this.m = new google.maps.Map(element, options);
+      //console.log(element);
+  },
+
+}) // end of gmap component
+
 
 new Vue({
-  el: '#container',
-  data: {
-      toggle: "home"
-  }, 
-  methods: {
-      updatetoggle: function(key){
-        this.toggle = key;
-        console.log(this.toggle);
-      }
-      // , partnership: function(){     // used for ajax
-      //         Vue.http.get("/partnership").then((res)=>{
-      //           console.log("The response: ");
-      //           console.log(res.body);
-      //           document.getElementById("mainContent").innerHTML = res.body;
-      //         })
-      // } // end of partnership
-  } // end of methods
-});
-
-
-
-
-
-
-// Vue.component("gmapp",{
-//   //   props:{
-//   //       bounds:{
-//   //           type:Object
-//   //       }
-//   //   },
-//     data: function(){
-//       return {m: null}
-//     },  
-//   mounted: function () {
-//       const element = document.getElementById("gmap")
-//       const options = {
-//         zoom: 14,
-//         center: new google.maps.LatLng(51.501527,-0.1921837)
-//       }
-//       this.m = new google.maps.Map(element, options);
-//       //console.log(element);
-//   },
-
-// }) // end of gmap component
+    el: '#mainContentToggle',
+    data: {
+        toggle: "home"
+    }, 
+    methods: {
+        updatetoggle: function(key){
+          this.toggle = key;
+          console.log(this.toggle);
+        }
+        // , partnership: function(){     // used for ajax
+        //         Vue.http.get("/partnership").then((res)=>{
+        //           console.log("The response: ");
+        //           console.log(res.body);
+        //           document.getElementById("mainContent").innerHTML = res.body;
+        //         })
+        // } // end of partnership
+    } // end of methods
+  });

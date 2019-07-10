@@ -5,34 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Coffee Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" /> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
-    <!-- <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key="  async defer></script> -->
    
 </head>
 <body>
     
-    <div id="container" >
+    <div id="app" class="container-fluid app">
 
-       <div id="header">
-            <p id="tutuCafe">
-                <strong> _______ Dark Roast Cafe _______ </strong>
-            </p>
+        <div id="header" class="row header">
+            <p id="headerTitle" class="headerTitle col-12 text-center my-auto"> Dark Roast Cafe </p>
         </div>
 
+
         
-        <div id="main">
-            <div id="mainContent" :toggle="toggle">
-                <home v-if="toggle === 'home'" ></home>
-                <partnership v-else v-on:updatetoggle="updatetoggle('home')"></partnership>
-            </div>  <!-- end of mainContent -->
+        <div id="main" class="row main">
+            <div id="mainContentToggle" :toggle="toggle" class="mainContentToggle col-12 my-auto" >
+                <maincontent v-if="toggle === 'home'"></maincontent>
+                <!-- <partnership v-else v-on:updatetoggle="updatetoggle('home')" class="row"></partnership> -->
+            </div>  
         </div>  <!-- end of main -->
 
 
-        <!-- <div id="bottomBorder"> -->
+        <div id="footer" class="row footer">
+            <div id="footerText" class="col-12 footerText">
+                Crafted by @LuisaTu
+            </div>
             <!-- <table id="bottomBorderTable">
                     <tr>
                         <td> <p class="bottomBorderTitle"  @click="updatetoggle('partnership')"> | Partnership </p> </td>
@@ -40,7 +44,7 @@
                         <td> <p class="bottomBorderTitle"> Copywright 2018 |</p> </td>                        
                     </tr>
             </table> -->
-        <!-- </div> -->
+        </div>
 
 
 
@@ -48,6 +52,10 @@
     </div>    <!-- End div container -->
 
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    
     <script src="js/main.js"></script>
 
