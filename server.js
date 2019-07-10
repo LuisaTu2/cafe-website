@@ -9,10 +9,15 @@ console.log(p);
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.json());
 
+app.post("/gethours", function(req, res){
+    var a = {"MF": "6:00AM - 3:00PM", "WH": "7:00AM - 2:00PM"};
+    res.status(200).send(a);
+    console.log(a);
+});
 
 app.get('/', (req, res) => {
     console.log("Hello there");   
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 }
 );
 
