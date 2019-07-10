@@ -9,7 +9,8 @@ app.use(express.static('public'));
 // app.use(express.static(__dirname + "/views"));  
 
 app.get("/", function(req, res){  
-    res.sendFile(path.join(__dirname + "/public/index.html")); 
+    // res.sendFile(path.join(__dirname + "/public/index.html")); 
+    res.sendFile("index.html"); 
 });
 
 app.post("/gethours", function(req, res){
