@@ -3,8 +3,9 @@ const express = require("express");
 const app = express();
 const PORT = process.env.port || 3000; 
 
-app.use(express.static(__dirname + "/public"));  
-console.log(path.join(__dirname + "/public/index.html"))
+// app.use(express.static(__dirname + "/public"));  
+app.use(express.static('public'));
+// console.log(path.join(__dirname + "/public/index.html"));
 // app.use(express.static(__dirname + "/views"));  
 
 app.get("/", function(req, res){  
