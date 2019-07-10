@@ -25,6 +25,6 @@ app.post("/gethours", function(req, res){
 //     console.log("You requested: " + req.url);
 // });
 
-app.listen(PORT, () => {
+app.listen(config.port, config.ip, () => {
     console.log(`Server is up on port ${ PORT }.`); 
 });
