@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
-var app = express();
+const app = express();
+const PORT = process.env.port || 3000; 
 
 app.use(express.static(__dirname + "/public"));  
 app.use(express.static(__dirname + "/views"));  
@@ -18,6 +19,6 @@ app.post("/gethours", function(req, res){
 //     console.log("You requested: " + req.url);
 // });
 
-app.listen(8080, () => {
-    console.log("Server is up on port 8080."); 
+app.listen(PORT, () => {
+    console.log(`Server is up on port ${ PORT }.`); 
 });
